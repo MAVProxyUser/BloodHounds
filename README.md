@@ -7,9 +7,9 @@
 
 ![Dog with gun](https://github.com/MAVProxyUser/BloodHounds/blob/main/dog_with_gun.png)
 
-**~~Paintball Sentry?~~**
 # Gelblaster Sentry!
-For years I've wanted to create a paintball sentry turret. My family has sold paintball guns for 2 decades now, so this has been a persistent though in my head. https://realsentrygun.com
+**~~Paintball Sentry?~~**
+For years I've wanted to create a paintball sentry turret. My family has sold paintball guns for 2 decades now, so this has been a persistent though in my head. https://realsentrygun.com. Now we sell Gelblasters at our store, so my brain has wandered a bit... 
 
 One of the first examples I can remember is a briefcase based version. 
 [![briefcase sentry](http://img.youtube.com/vi/mP6LgxkhMzY/0.jpg)](https://www.youtube.com/watch?v=mP6LgxkhMzY)<br>
