@@ -98,7 +98,7 @@ This image needs updated, but yes, YES, I feel it now, we DO wanna fight robot d
 
 # Gamification of existing hardware
 
-- Unitree Go1
+- Unitree Go1, or Xiaomi yberdog support base
 - Gellblaster Surge Payload
 - Gellblaster "surprise box", explosion simulator. Think confetti cannon that throws gelets everywhere. 
 - Hit registration package(?) for the dog to temporarily disable
