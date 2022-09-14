@@ -7,7 +7,7 @@
 
 ![Dog with gun](https://github.com/MAVProxyUser/BloodHounds/blob/main/dog_with_gun.png)
 
-~~# Paintball Sentry?~~
+**~~Paintball Sentry?~~**
 # Gelblaster Sentry!
 For years I've wanted to create a paintball sentry turret. My family has sold paintball guns for 2 decades now, so this has been a persistent though in my head. https://realsentrygun.com
 
