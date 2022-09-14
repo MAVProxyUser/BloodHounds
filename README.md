@@ -85,7 +85,7 @@ The sad reality is that dogs have always been used to hunt men. One terrifying a
 ![The Black Phalanx](https://github.com/MAVProxyUser/BloodHounds/blob/main/BlackPhalanx.jpg)
 https://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=ha102744390
 
-"Bloodhounds were universally used throughout the South to capture runaway slaves, & were specifically bred for that purpose...  one can imagine the reaction... when they finally got the chance to fight back against this vicious symbol of their oppression" 
+"Bloodhounds were universally used throughout the South to capture runaway slaves, & were specifically bred for that purpose...  one can imagine the reaction... when they finally got the chance to fight back against this vicious symbol of their oppression"<br> 
 http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2001.05.0021%3Achapter%3D10
 
 ![Terrible Fight with Bloodhounds](https://github.com/MAVProxyUser/BloodHounds/blob/main/TerribleFightWithBloodhounds.png)
@@ -104,3 +104,12 @@ This image needs updated, but yes, YES, I feel it now, we DO wanna fight robot d
 - Hit registration package(?) for the dog to temporarily disable
 - Scoring system
 - ROS Mapping with ability to send dogs to point on map to engage human players
+
+# Needs
+- More dogs
+- Gelblaster Surge with no handle, and more easily accessible electronics
+- Gimbal!!!!
+- Start on ROS examples to coordinate getting dogs to a specific location. 
+- Start on generic *hunt* code and dog2dog comms
+- Work on a target that players can hit to disable the dog
+- Mo money, mo people! 
