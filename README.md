@@ -1,4 +1,4 @@
-* [Paint Ball Sentry?](#paint-ball-sentry)
+* [Gelblaster Sentry!](#gelblaster-sentry)
 * [Project Bloodhound](#project-bloodhound)
    * [How it Started](#how-it-started)
    * [How it's Going](#how-its-going)
@@ -7,7 +7,8 @@
 
 ![Dog with gun](https://github.com/MAVProxyUser/BloodHounds/blob/main/dog_with_gun.png)
 
-# Paintball Sentry?
+~~# Paintball Sentry?~~
+# Gelblaster Sentry!
 For years I've wanted to create a paintball sentry turret. My family has sold paintball guns for 2 decades now, so this has been a persistent though in my head. https://realsentrygun.com
 
 One of the first examples I can remember is a briefcase based version. 
