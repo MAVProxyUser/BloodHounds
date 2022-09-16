@@ -4,6 +4,7 @@
    * [How it's Going](#how-its-going)
 * [Setting the Stage](#setting-the-stage)
 * [Dogs of War](#dogs-of-war)
+* [Implementation](#implementation)
 
 ![Dog with gun](https://github.com/MAVProxyUser/BloodHounds/blob/main/dog_with_gun.png)
 
