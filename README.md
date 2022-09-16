@@ -113,3 +113,6 @@ This image needs updated, but yes, YES, I feel it now, we DO wanna fight robot d
 - Start on generic *hunt* code and dog2dog comms
 - Work on a target that players can hit to disable the dog
 - Mo money, mo people! 
+
+# Implementation
+- Swarming - http://wiki.ros.org/micros_swarm_framework
