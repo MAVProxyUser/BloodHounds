@@ -8,6 +8,9 @@
 
 ![Dog with gun](https://github.com/MAVProxyUser/BloodHounds/blob/main/dog_with_gun.png)
 
+Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: 
+https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ
+
 # Gelblaster Sentry!
 **~~Paintball Sentry?~~**
 For years I've wanted to create a paintball sentry turret. My family has sold paintball guns for 2 decades now, so this has been a persistent thought in my head. https://realsentrygun.com. Now we sell Gelblasters at our store, so my brain has wandered a bit... 
