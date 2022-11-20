@@ -14,7 +14,7 @@ def draw_faces(request):
             cv2.rectangle(m.array, (x, y), (x + w, y + h), (0, 255, 0, 0))
 
 picam2 = Picamera2()
-picam2.start_preview(Preview.QTGL)
+#picam2.start_preview(Preview.QTGL)
 config = picam2.create_preview_configuration(main={"size": (640, 480)},
                                       lores={"size": (320, 240), "format": "YUV420"})
 picam2.configure(config)
@@ -28,10 +28,8 @@ picam2.post_callback = draw_faces
 encoder = H264Encoder(10000000)
 picam2.start_recording(encoder, "test.h264")
 
-# Run for 30 seconds.
-
 try:
-    while true:
+    while True:
         buffer = picam2.capture_buffer("lores")
         grey = buffer[:s1 * h1].reshape((h1, s1))
         faces = face_detector.detectMultiScale(grey, 1.1, 3)
