@@ -1,7 +1,10 @@
 #!/usr/bin/env python
+#
+# Uses this to set CW/CCW Angle Limit(6, 8)
+#
 # Based on https://github.com/ROBOTIS-GIT/DynamixelSDK/blob/master/python/tests/protocol1_0/read_write.py
 #
-# Supporting 3d printed structures
+# Use with turret constructed of the following supporting 3d printed structures:
 # https://www.thingiverse.com/thing:98266 +  https://www.thingiverse.com/thing:3821230 (melded together by Cherbini)
 # https://grabcad.com/library/fr05-s101k-1
 # https://grabcad.com/library/dynamixel_28t_servohorn-1 (used temporarily for support in liu of HN07-I101 Set)
@@ -9,7 +12,7 @@
 # 
 from dynamixel_sdk import *                     # Uses Dynamixel SDK library
 
-# Control table address for MX-28AT
+# Control table address for MX-28AT, design uses one each for pan and tilt
 # https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/dxl/mx/mx-28.md
 #
 
@@ -21,8 +24,8 @@ ADDR_MX_PRESENT_POSITION   = 36
 PROTOCOL_VERSION            = 1.0               # See which protocol version is used in the Dynamixel
 
 # Default setting
-DXL_ID                      = 1                 # Dynamixel ID : 1
-DXL_ID2                     = 2                 # Dynamixel ID : 2
+DXL_ID                      = 1                 # Dynamixel ID : 1 - Tilt (Pitch)
+DXL_ID2                     = 2                 # Dynamixel ID : 2 - Pan (Yaw)
 BAUDRATE                    = 57600             # Dynamixel default baudrate : 57600
 DEVICENAME                  = '/dev/ttyUSB0'    # Check which port is being used on your controller
                                                 # ex) Windows: "COM1"   Linux: "/dev/ttyUSB0" Mac: "/dev/tty.usbserial-*"
