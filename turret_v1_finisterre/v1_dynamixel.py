@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 import cv2
 
 from picamera2 import MappedArray, Picamera2, Preview
