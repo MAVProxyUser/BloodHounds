@@ -67,39 +67,45 @@ y_min = 4096
 x_last_position = -1
 y_last_position = -1
 
-while 1:
-    # Read present position
-    dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read2ByteTxRx(portHandler, DXL_ID, ADDR_MX_PRESENT_POSITION)
-    if dxl_comm_result != COMM_SUCCESS:
-        print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
-        print("%s" % packetHandler.getRxPacketError(dxl_error))
+try:
+    while 1:
+        # Read present position
+        dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read2ByteTxRx(portHandler, DXL_ID, ADDR_MX_PRESENT_POSITION)
+        if dxl_comm_result != COMM_SUCCESS:
+            print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
+        elif dxl_error != 0:
+            print("%s" % packetHandler.getRxPacketError(dxl_error))
 
-    dxl_present_position2, dxl_comm_result, dxl_error = packetHandler.read2ByteTxRx(portHandler, DXL_ID2, ADDR_MX_PRESENT_POSITION)
-    if dxl_comm_result != COMM_SUCCESS:
-        print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
-    elif dxl_error != 0:
-        print("%s" % packetHandler.getRxPacketError(dxl_error))
+        dxl_present_position2, dxl_comm_result, dxl_error = packetHandler.read2ByteTxRx(portHandler, DXL_ID2, ADDR_MX_PRESENT_POSITION)
+        if dxl_comm_result != COMM_SUCCESS:
+            print("%s" % packetHandler.getTxRxResult(dxl_comm_result))
+        elif dxl_error != 0:
+            print("%s" % packetHandler.getRxPacketError(dxl_error))
 
-    if x_last_position != dxl_present_position:
-        print("[ID:%03d] X PresPos:%03d" % (DXL_ID, dxl_present_position))
-        x_last_position = dxl_present_position
-    if y_last_position != dxl_present_position2:
-        print("[ID:%03d] Y PresPos:%03d" % (DXL_ID2, dxl_present_position2))
-        y_last_position = dxl_present_position2
+        if x_last_position != dxl_present_position:
+            print("[ID:%03d] X PresPos:%03d" % (DXL_ID, dxl_present_position))
+            x_last_position = dxl_present_position
 
-    if dxl_present_position > x_max:
-        x_max = dxl_present_position
-        print("[ID:%03d] new X MaxPos:%03d" % (DXL_ID, x_max))
-    if dxl_present_position2 > y_max:
-        y_max = dxl_present_position2
-        print("[ID:%03d] new Y MaxPos:%03d" % (DXL_ID2, y_max))
-    if dxl_present_position < x_min:
-        x_min = dxl_present_position
-        print("[ID:%03d] new X MinPos:%03d" % (DXL_ID, x_min))
-    if dxl_present_position2 < y_min:
-        y_min = dxl_present_position2
-        print("[ID:%03d] new Y MinPos:%03d" % (DXL_ID2, y_min))
+        if y_last_position != dxl_present_position2:
+            print("[ID:%03d] Y PresPos:%03d" % (DXL_ID2, dxl_present_position2))
+            y_last_position = dxl_present_position2
+
+        if dxl_present_position > x_max:
+            x_max = dxl_present_position
+            print("[ID:%03d] new X MaxPos:%03d" % (DXL_ID, x_max))
+        if dxl_present_position2 > y_max:
+            y_max = dxl_present_position2
+            print("[ID:%03d] new Y MaxPos:%03d" % (DXL_ID2, y_max))
+        if dxl_present_position < x_min:
+            x_min = dxl_present_position
+            print("[ID:%03d] new X MinPos:%03d" % (DXL_ID, x_min))
+        if dxl_present_position2 < y_min:
+            y_min = dxl_present_position2
+            print("[ID:%03d] new Y MinPos:%03d" % (DXL_ID2, y_min))
+except KeyboardInterrupt:
+    print('interrupted!')
+    print("[ID:%03d] X-Max:%03d X-Min:%03d" % (DXL_ID, x_max, x_in))
+    print("[ID:%03d] Y-Max:%03d Y-Min:%03d" % (DXL_ID2, y_max, y_min))
 
 # Close port
 portHandler.closePort()
