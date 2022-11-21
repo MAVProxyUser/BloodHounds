@@ -45,7 +45,7 @@ try:
             print("I see you! At coords:")
             print("X: " + str(Xpos))
             print("Y: " + str(Ypos))
-            print("Z: " + str(Zpos))
+            # print("Z: " + str(Zpos))
 
             # Center is x: 127 / y: 127
 
