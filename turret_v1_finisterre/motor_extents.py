@@ -104,7 +104,7 @@ try:
             print("[ID:%03d] new Y MinPos:%03d" % (DXL_ID2, y_min))
 except KeyboardInterrupt:
     print('interrupted!')
-    print("[ID:%03d] X-Max:%03d X-Min:%03d" % (DXL_ID, x_max, x_in))
+    print("[ID:%03d] X-Max:%03d X-Min:%03d" % (DXL_ID, x_max, x_min))
     print("[ID:%03d] Y-Max:%03d Y-Min:%03d" % (DXL_ID2, y_max, y_min))
 
 # Close port
