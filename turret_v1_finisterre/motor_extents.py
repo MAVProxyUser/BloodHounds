@@ -60,6 +60,11 @@ if dxl_comm_result != COMM_SUCCESS:
 elif dxl_error != 0:
     print("%s" % packetHandler.getRxPacketError(dxl_error))
 
+x_max = 0
+y_max = 0
+x_min = 4096
+y_min = 4096
+
 while 1:
     # Read present position
     dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read2ByteTxRx(portHandler, DXL_ID, ADDR_MX_PRESENT_POSITION)
