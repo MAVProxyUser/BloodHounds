@@ -25,8 +25,9 @@ s1 = picam2.stream_configuration("lores")["stride"]
 faces = []
 picam2.post_callback = draw_faces
 
-encoder = H264Encoder(10000000)
-picam2.start_recording(encoder, "test.h264")
+#encoder = H264Encoder(10000000)
+#picam2.start_recording(encoder, "test.h264")
+picam2.start()
 
 try:
     while True:
