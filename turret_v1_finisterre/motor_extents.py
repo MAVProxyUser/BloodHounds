@@ -64,6 +64,8 @@ x_max = 0
 y_max = 0
 x_min = 4096
 y_min = 4096
+x_last_position = -1
+y_last_position = -1
 
 while 1:
     # Read present position
@@ -79,7 +81,12 @@ while 1:
     elif dxl_error != 0:
         print("%s" % packetHandler.getRxPacketError(dxl_error))
 
-    print("[ID:%03d] X PresPos:%03d [ID:%03d] Y PresPos:%03d" % (DXL_ID, dxl_present_position, DXL_ID2, dxl_present_position2))
+    if x_last_position != dxl_present_position:
+        print("[ID:%03d] X PresPos:%03d" % (DXL_ID, dxl_present_position))
+        x_last_position = dxl_present_position
+    if y_last_position != dxl_present_position2:
+        print("[ID:%03d] Y PresPos:%03d" % (DXL_ID2, dxl_present_position2))
+        y_last_position = dxl_present_position2
 
     if dxl_present_position > x_max:
         x_max = dxl_present_position
