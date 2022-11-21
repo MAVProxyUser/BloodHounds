@@ -47,21 +47,19 @@ try:
             print("Y: " + str(Ypos))
             print("Z: " + str(Zpos))
 
-    #        if Xpos >= 380:
-    #            pan_motor.run(1, False) #clockwise
-    #            sleep(0.005)
-    #        elif Xpos <= 260:           #with respect to the center of the frame
-    #            pan_motor.run(1, True) #counter clockwise
-    #            sleep(0.005)
-    #        elif Ypos > 300:
-    #            tilt_motor.run(1, False) #down
-    #            sleep(0.005)
-    #        elif Ypos < 180:
-    #            tilt_motor.run(1, True) #up
-    #            sleep(0.005)
-    #        else:
-    #            locked(Xpos,260,380)
-    #        break
+            # Center is x: 127 / y: 127
+
+            if Xpos >= 190:
+                 print("Clockwise")
+            elif Xpos <= 130:           #with respect to the center of the frame
+                 print("Counter clockwise")
+            elif Ypos > 150:
+                 print("Down")
+            elif Ypos < 90:
+                 print("Up")
+            else:
+                 print("Locked")
+            break
 except KeyboardInterrupt:
     print('interrupted!')
 
