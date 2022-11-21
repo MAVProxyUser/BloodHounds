@@ -83,16 +83,16 @@ while 1:
 
     if dxl_present_position > x_max:
         x_max = dxl_present_position
-        print("[ID:%03d] new MaxPos:%03d" % (DXL_ID, x_max))
+        print("[ID:%03d] new X MaxPos:%03d" % (DXL_ID, x_max))
     if dxl_present_position2 > y_max:
         y_max = dxl_present_position2
-        print("[ID:%03d] new MaxPos:%03d" % (DXL_ID2, y_max))
+        print("[ID:%03d] new Y MaxPos:%03d" % (DXL_ID2, y_max))
     if dxl_present_position < x_min:
         x_max = dxl_present_position
-        print("[ID:%03d] new MinPos:%03d" % (DXL_ID, x_min))
+        print("[ID:%03d] new X MinPos:%03d" % (DXL_ID, x_min))
     if dxl_present_position2 < y_min:
         y_max = dxl_present_position2
-        print("[ID:%03d] new MinPos:%03d" % (DXL_ID2, y_min))
+        print("[ID:%03d] new Y MinPos:%03d" % (DXL_ID2, y_min))
 
 # Close port
 portHandler.closePort()
