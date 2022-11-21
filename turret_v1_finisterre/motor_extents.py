@@ -79,7 +79,7 @@ while 1:
     elif dxl_error != 0:
         print("%s" % packetHandler.getRxPacketError(dxl_error))
 
-    print("[ID:%03d] PresPos:%03d [ID:%03d] PresPos:%03d" % (DXL_ID, dxl_present_position, DXL_ID2, dxl_present_position2))
+    print("[ID:%03d] X PresPos:%03d [ID:%03d] Y PresPos:%03d" % (DXL_ID, dxl_present_position, DXL_ID2, dxl_present_position2))
 
     if dxl_present_position > x_max:
         x_max = dxl_present_position
@@ -88,10 +88,10 @@ while 1:
         y_max = dxl_present_position2
         print("[ID:%03d] new Y MaxPos:%03d" % (DXL_ID2, y_max))
     if dxl_present_position < x_min:
-        x_max = dxl_present_position
+        x_min = dxl_present_position
         print("[ID:%03d] new X MinPos:%03d" % (DXL_ID, x_min))
     if dxl_present_position2 < y_min:
-        y_max = dxl_present_position2
+        y_min = dxl_present_position2
         print("[ID:%03d] new Y MinPos:%03d" % (DXL_ID2, y_min))
 
 # Close port
