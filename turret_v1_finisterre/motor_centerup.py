@@ -26,9 +26,9 @@ DXL_MAXIMUM_POSITION_VALUE  = 4095            # and this value (note that the Dy
 X_DXL_MOVING_STATUS_THRESHOLD = 6                # Dynamixel moving status threshold
 Y_DXL_MOVING_STATUS_THRESHOLD = 6                # Dynamixel moving status threshold
 
-# Center : [ID:001] PresPos:1538 [ID:002] PresPos:2854
-x_dxl_goal_position = 1538         # X Center Goal position
-y_dxl_goal_position = 2854         # Y Center Goal position
+# Center: [ID:001] X PresPos:1956 [ID:002] Y PresPos:840
+x_dxl_goal_position = 1956         # X Center Goal position
+y_dxl_goal_position = 840         # Y Center Goal position
 
 portHandler = PortHandler(DEVICENAME)
 packetHandler = PacketHandler(PROTOCOL_VERSION)
