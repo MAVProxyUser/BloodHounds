@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-# https://emanual.robotis.com/docs/en/dxl/mx/mx-28/
-
+# MX(2.0) Firmware is different from MX series’ control table and address. 
+# https://emanual.robotis.com/docs/en/dxl/mx/mx-28-2/#control-table
 import os
 from dynamixel_sdk import *
-ADDR_MX_TORQUE_ENABLE      = 24
-ADDR_MX_GOAL_POSITION      = 30
-ADDR_MX_PRESENT_POSITION   = 36
-PROTOCOL_VERSION            = 1.0
+ADDR_MX_TORQUE_ENABLE      = 64
+ADDR_MX_GOAL_POSITION      = 116
+ADDR_MX_PRESENT_POSITION   = 132
+PROTOCOL_VERSION            = 2.0
 DXL_ID                      = 1
 DXL_ID2                     = 2
 BAUDRATE                    = 57600

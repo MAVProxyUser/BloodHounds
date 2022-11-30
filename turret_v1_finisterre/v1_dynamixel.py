@@ -1,8 +1,18 @@
 #!/usr/bin/env python
-import cv2
+# https://github.com/raspberrypi/picamera2/blob/main/examples/opencv_face_detect_2.py
+# https://github.com/UGA-BSAIL/dynamixel-controller/blob/moreJSON/docs.md
 
+from dynio import *
+import cv2
 from picamera2 import MappedArray, Picamera2, Preview
 from picamera2.encoders import H264Encoder
+
+dxl_io = dxl.DynamixelIO('/dev/ttyUSB0', baud_rate=57600)
+mx_28_y = dxl_io.new_mx28(1, 1)  # MX-64 protocol 1 with ID 2
+mx_28_x = dxl_io.new_mx28(2, 1)  # MX-64 protocol 1 with ID 2
+
+mx_28_y.torque_enable()
+mx_28_x.torque_enable()
 
 face_detector = cv2.CascadeClassifier("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml")
 
@@ -45,17 +55,32 @@ try:
             print("I see you! At coords:")
             print("X: " + str(Xpos))
             print("Y: " + str(Ypos))
-            # print("Z: " + str(Zpos))
+
+            positiony = mx_28_y.get_position()
+            positionx = mx_28_x.get_position()
+            angley = mx_28_y.get_angle()
+            anglex = mx_28_x.get_angle()
+
+            print("Y pos: " + str(positiony))
+            print("X pos: " + str(positionx))
+            print("Angle y: " + str(angley))
+            print("Angle x: " + str(anglex))
 
             # Center is x: 127 / y: 127
+            # Max is 255 / 255
+            # Min is 0 / 0 
 
             if Xpos >= 190:
+                 mx_28_x.set_angle(anglex-10)
                  print("Clockwise")
             elif Xpos <= 130:           #with respect to the center of the frame
                  print("Counter clockwise")
+                 mx_28_x.set_angle(anglex+10)
             elif Ypos > 150:
+                 mx_28_y.set_angle(angley-10)
                  print("Down")
             elif Ypos < 90:
+                 mx_28_y.set_angle(angley+10)
                  print("Up")
             else:
                  print("Locked")
