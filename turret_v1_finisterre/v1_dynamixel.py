@@ -14,6 +14,9 @@ mx_28_x = dxl_io.new_mx28(2, 1)  # MX-64 protocol 1 with ID 2
 mx_28_y.torque_enable()
 mx_28_x.torque_enable()
 
+mx_28_y.set_position(2021)
+mx_28_x.set_position(2863)
+
 face_detector = cv2.CascadeClassifier("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml")
 
 
@@ -71,16 +74,16 @@ try:
             # Min is 0 / 0 
 
             if Xpos >= 190:
-                 mx_28_x.set_angle(anglex-10)
+                 mx_28_x.set_angle(anglex-4)
                  print("Clockwise")
             elif Xpos <= 130:           #with respect to the center of the frame
                  print("Counter clockwise")
-                 mx_28_x.set_angle(anglex+10)
+                 mx_28_x.set_angle(anglex+4)
             elif Ypos > 150:
-                 mx_28_y.set_angle(angley-10)
+                 mx_28_y.set_angle(angley+6)
                  print("Down")
             elif Ypos < 90:
-                 mx_28_y.set_angle(angley+10)
+                 mx_28_y.set_angle(angley-6)
                  print("Up")
             else:
                  print("Locked")
