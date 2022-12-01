@@ -93,7 +93,7 @@ try:
             break
 
         noface=noface+1
-        print("no face")
+#        print("no face")
         if noface >= 150:
             mx_28_y.set_position(2021)
             mx_28_x.set_position(2863)
