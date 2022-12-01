@@ -6,6 +6,7 @@ from dynio import *
 import cv2
 from picamera2 import MappedArray, Picamera2, Preview
 from picamera2.encoders import H264Encoder
+from libcamera import Transform
 
 dxl_io = dxl.DynamixelIO('/dev/ttyUSB0', baud_rate=57600)
 mx_28_y = dxl_io.new_mx28(1, 1)  # MX-64 protocol 1 with ID 2
@@ -28,7 +29,7 @@ def draw_faces(request):
 
 picam2 = Picamera2()
 #picam2.start_preview(Preview.QTGL)
-config = picam2.create_preview_configuration(main={"size": (640, 480)},
+config = picam2.create_preview_configuration(transform=Transform(vflip=True, hflip=True), main={"size": (640, 480)},
                                       lores={"size": (320, 240), "format": "YUV420"})
 picam2.configure(config)
 
@@ -71,7 +72,7 @@ try:
 
             # Center is x: 127 / y: 127
             # Max is 255 / 255
-            # Min is 0 / 0 
+            # Min is 0 / 0
 
             if Xpos >= 190:
                  mx_28_x.set_angle(anglex-4)
@@ -80,10 +81,10 @@ try:
                  print("Counter clockwise")
                  mx_28_x.set_angle(anglex+4)
             elif Ypos > 150:
-                 mx_28_y.set_angle(angley+6)
+                 mx_28_y.set_angle(angley+5.5)
                  print("Down")
             elif Ypos < 90:
-                 mx_28_y.set_angle(angley-6)
+                 mx_28_y.set_angle(angley-5.5)
                  print("Up")
             else:
                  print("Locked")
