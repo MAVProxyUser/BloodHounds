@@ -44,10 +44,12 @@ picam2.post_callback = draw_faces
 picam2.start()
 
 try:
+    noface = 0
     while True:
         buffer = picam2.capture_buffer("lores")
         grey = buffer[:s1 * h1].reshape((h1, s1))
         faces = face_detector.detectMultiScale(grey, 1.1, 3)
+
 
         for index,(x,y,w,h) in enumerate(faces):
             frame = cv2.rectangle(buffer, (x,y), (x+w,y+h), (255,255,0), 2)
@@ -89,6 +91,14 @@ try:
             else:
                  print("Locked")
             break
+
+        noface=noface+1
+        print("no face")
+        if noface >= 150:
+            mx_28_y.set_position(2021)
+            mx_28_x.set_position(2863)
+            noface=0
+
 except KeyboardInterrupt:
     print('interrupted!')
 
