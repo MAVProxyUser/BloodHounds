@@ -28,7 +28,7 @@ def draw_faces(request):
             cv2.rectangle(m.array, (x, y), (x + w, y + h), (0, 255, 0, 0))
 
 picam2 = Picamera2()
-picam2.start_preview(Preview.QT)
+# picam2.start_preview(Preview.QT)
 config = picam2.create_preview_configuration(transform=Transform(vflip=True, hflip=True), main={"size": (640, 480)},
                                       lores={"size": (320, 240), "format": "YUV420"})
 picam2.configure(config)
