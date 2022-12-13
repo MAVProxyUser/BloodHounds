@@ -7,6 +7,11 @@ import cv2
 from picamera2 import MappedArray, Picamera2, Preview
 from picamera2.encoders import H264Encoder
 from libcamera import Transform
+import RPi.GPIO as GPIO
+from time import sleep
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(21, GPIO.OUT)
 
 dxl_io = dxl.DynamixelIO('/dev/ttyUSB0', baud_rate=57600)
 mx_28_y = dxl_io.new_mx28(1, 1)  # MX-64 protocol 1 with ID 2
@@ -90,6 +95,10 @@ try:
                  print("Up")
             else:
                  print("Locked")
+                 GPIO.output(21, GPIO.HIGH)
+                 sleep(1)
+                 GPIO.output(21, GPIO.LOW)
+
             break
 
         noface=noface+1
