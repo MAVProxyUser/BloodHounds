@@ -1,0 +1,69 @@
+diff --git a/apps/ping_pong/app.c b/apps/ping_pong/app.c
+index ba6cd6b..ee1defa 100644
+--- a/apps/ping_pong/app.c
++++ b/apps/ping_pong/app.c
+@@ -19,6 +19,9 @@
+ #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Aborting.\n",__LINE__,(int)temp_rc); vTaskDelete(NULL);}}
+ #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Continuing.\n",__LINE__,(int)temp_rc);}}
+ 
++#include "driver/gpio.h"
++#define BLINK_GPIO 13
++
+ rcl_publisher_t ping_publisher;
+ rcl_publisher_t pong_publisher;
+ rcl_subscription_t ping_subscriber;
+@@ -32,6 +35,7 @@ int device_id;
+ int seq_no;
+ int pong_count;
+ 
++/*
+ void ping_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+ {
+ 	RCLC_UNUSED(last_call_time);
+@@ -54,7 +58,7 @@ void ping_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+ 		printf("Ping send seq %s\n", outcoming_ping.frame_id.data);
+ 	}
+ }
+-
++*/
+ void ping_subscription_callback(const void * msgin)
+ {
+ 	const std_msgs__msg__Header * msg = (const std_msgs__msg__Header *)msgin;
+@@ -63,6 +67,18 @@ void ping_subscription_callback(const void * msgin)
+ 	if(strcmp(outcoming_ping.frame_id.data, msg->frame_id.data) != 0){
+ 		printf("Ping received with seq %s. Answering.\n", msg->frame_id.data);
+ 		rcl_publish(&pong_publisher, (const void*)msg, NULL);
++                gpio_pad_select_gpio(BLINK_GPIO);
++                /* Set the GPIO as a push/pull output */
++                gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
++                /* Blink off (output low) */
++                printf("Turning on the LED %i\n", BLINK_GPIO);
++                gpio_set_level(BLINK_GPIO, 1);
++                vTaskDelay(1000 / portTICK_PERIOD_MS);
++                /* Blink on (output high) */
++                printf("Turning off the LED %i\n", BLINK_GPIO);
++                gpio_set_level(BLINK_GPIO, 0);
++                vTaskDelay(1000 / portTICK_PERIOD_MS);
++
+ 	}
+ }
+ 
+@@ -108,14 +124,14 @@ void appMain(void *argument)
+ 
+ 
+ 	// Create a 3 seconds ping timer timer,
+-	rcl_timer_t timer;
+-	RCCHECK(rclc_timer_init_default(&timer, &support, RCL_MS_TO_NS(2000), ping_timer_callback));
++//	rcl_timer_t timer;
++//	RCCHECK(rclc_timer_init_default(&timer, &support, RCL_MS_TO_NS(2000), ping_timer_callback));
+ 
+ 
+ 	// Create executor
+ 	rclc_executor_t executor;
+ 	RCCHECK(rclc_executor_init(&executor, &support.context, 3, &allocator));
+-	RCCHECK(rclc_executor_add_timer(&executor, &timer));
++//	RCCHECK(rclc_executor_add_timer(&executor, &timer));
+ 	RCCHECK(rclc_executor_add_subscription(&executor, &ping_subscriber, &incoming_ping,
+ 		&ping_subscription_callback, ON_NEW_DATA));
+ 	RCCHECK(rclc_executor_add_subscription(&executor, &pong_subscriber, &incoming_pong,
+
