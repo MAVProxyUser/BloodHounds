@@ -1,0 +1,48 @@
+SparkFun Thing Plus
+https://www.sparkfun.com/products/15663
+Adafruit Non-Latching Mini Relay FeatherWing
+https://www.adafruit.com/product/2895
+
+user@dev0:~$ source /opt/ros/galactic/setup.bash 
+user@dev0:~$ echo $ROS_DISTRO
+user@dev0:~/microros_ws$ mkdir -p ~/microros_ws/src/
+user@dev0:~/microros_ws$ cd ~/microros_ws/src/
+user@dev0:~/microros_ws/src$ git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git
+user@dev0:~/microros_ws/src$ cd ~/microros_ws/
+user@dev0:~/microros_ws$ sudo apt update && rosdep update
+user@dev0:~/microros_ws$ rosdep install --from-path src --ignore-src -y
+user@dev0:~/microros_ws$ sudo apt-get install python3-pip
+user@dev0:~/microros_ws$ colcon build
+user@dev0:~/microros_ws$ source install/local_setup.bash
+user@dev0:~/microros_ws$ ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
+user@dev0:~/microros_ws$ cd ./firmware/freertos_apps
+user@dev0:~/microros_ws/firmware/freertos_apps$ wget https://raw.githubusercontent.com/MAVProxyUser/BloodHounds/main/turret_v1_finisterre/ESP32_microros_ping_pong_relay.diff
+user@dev0:~/microros_ws/firmware/freertos_apps$ cat ESP32_microros_ping_pong_relay.diff  | patch -p1
+user@dev0:~/microros_ws$ nmcli con | grep wifi 
+user@dev0:~/microros_ws$ ifconfig <device from above>
+user@dev0:~/microros_ws$ ros2 run micro_ros_setup configure_firmware.sh ping_pong -t udp -i <ip from above> -p 8888
+user@dev0:~/microros_ws$ ros2 run micro_ros_setup build_firmware.sh menuconfig
+Edit "micro-ROS Transport Settings" set your wifi password
+user@dev0:~/microros_ws$ ros2 run micro_ros_setup build_firmware.sh
+user@dev0:~/microros_ws$ sudo chmod 777 /dev/ttyUSB0 
+user@dev0:~/microros_ws$ ros2 run micro_ros_setup flash_firmware.sh
+user@dev0:~/microros_ws$ ros2 run micro_ros_setup build_firmware.sh monitor
+
+In a new window
+user@dev0:~/microros_ws$ docker run -it --rm --net=host microros/micro-ros-agent:foxy udp4 --port 8888 -v6
+
+In yet another window test the setup
+user@dev0:~$ source /opt/ros/galactic/setup.bash 
+user@dev0:~$ ros2 topic list
+/microROS/ping
+/microROS/pong
+/parameter_events
+/rosout
+
+user@dev0:~$ ros2 topic pub --once /microROS/ping std_msgs/msg/Header '{frame_id: "fake_ping"}'
+publisher: beginning loop
+publishing #1: std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=0, nanosec=0), frame_id='fake_ping')
+
+(Relay pops) 
+
+
