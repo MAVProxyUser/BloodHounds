@@ -9,6 +9,7 @@ from picamera2.encoders import H264Encoder
 from libcamera import Transform
 import RPi.GPIO as GPIO
 from time import sleep
+from threading import Thread
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.OUT)
@@ -24,7 +25,6 @@ mx_28_y.set_position(2021)
 mx_28_x.set_position(2863)
 
 face_detector = cv2.CascadeClassifier("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml")
-
 
 def draw_faces(request):
     with MappedArray(request, "main") as m:
@@ -47,6 +47,13 @@ picam2.post_callback = draw_faces
 #encoder = H264Encoder(10000000)
 #picam2.start_recording(encoder, "test.h264")
 picam2.start()
+
+def fire():
+    print("start firing")
+    GPIO.output(21, GPIO.HIGH)
+    sleep(.3)
+    GPIO.output(21, GPIO.LOW)
+    print("stop firing")
 
 try:
     noface = 0
@@ -84,20 +91,23 @@ try:
             if Xpos >= 190:
                  mx_28_x.set_angle(anglex-4)
                  print("Clockwise")
+
             elif Xpos <= 130:           #with respect to the center of the frame
-                 print("Counter clockwise")
                  mx_28_x.set_angle(anglex+4)
+                 print("Counter clockwise")
+
             elif Ypos > 150:
                  mx_28_y.set_angle(angley+5.5)
                  print("Down")
+
             elif Ypos < 90:
                  mx_28_y.set_angle(angley-5.5)
                  print("Up")
             else:
                  print("Locked")
-                 GPIO.output(21, GPIO.HIGH)
-                 sleep(1)
-                 GPIO.output(21, GPIO.LOW)
+                 thread = Thread(target=fire)
+                 thread.start()
+                 thread.join()
 
             break
 
