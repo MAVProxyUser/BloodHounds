@@ -1,15 +1,20 @@
+Project BloodHounds, autonomous pack hunting armed robotic quadrupeds in a prepackaged "game"
+
+Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: 
+https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ
+
 * [Gelblaster Sentry!](#gelblaster-sentry)
 * [Project Bloodhound](#project-bloodhound)
    * [How it Started](#how-it-started)
    * [How it's Going](#how-its-going)
-* [Setting the Stage](#setting-the-stage)
-* [Dogs of War](#dogs-of-war)
+* [Gamification of existing hardware](#gamification-of-existing-hardware)
+* [Needs](#needs)
 * [Implementation](#implementation)
+* [Dogs of War](#dogs-of-war)
+* [Setting the final stage](#setting-the-final-stage)
+* [Morality of it all?](#morality-of-it-all)
 
 ![Dog with gun](https://github.com/MAVProxyUser/BloodHounds/blob/main/dog_with_gun.png)
-
-Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: 
-https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ
 
 # Gelblaster Sentry!
 **~~Paintball Sentry?~~**
