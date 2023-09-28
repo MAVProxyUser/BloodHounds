@@ -1,7 +1,7 @@
 Project BloodHounds, autonomous pack hunting armed robotic quadrupeds in a prepackaged "game"
 
 Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: 
-https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ
+https://join.slack.com/t/robotdogs/shared_invite/zt-24ep8mqn4-1p42Aq7owRv9klLI~3C5Pw
 
 * [Gelblaster Sentry!](#gelblaster-sentry)
 * [Project Bloodhound](#project-bloodhound)
